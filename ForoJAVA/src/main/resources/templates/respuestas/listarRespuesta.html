@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+</html>
+<html lang="en">
+
+<head th:replace="./base :: head"></head>
+
+<body>
+    
+    <nav th:replace="./base :: nav"></nav>
+
+    <div class="container mt-5 p-2">
+        <h1 class="text-center mt-4" th:text="${titulo}"></h1>
+
+        <a th:href="@{/respuestas/form}" class="btn btn-info">Registrar respuesta</a><br/><br/>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Comentario</th>
+                    <th>Usuario</th>
+                    <th>Respuesta del comentario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="i: ${datos}">
+                    <td th:text="${i.Id}"></td>
+                    <td th:text="${i.comentario.Respuesta}"></td>
+                    <td th:text="${i.Usuario.Nombre}"></td>
+                    <td th:text="${i.ResComentario}"></td>
+                    <td>
+                        <a th:href="@{/respuestas/editar/} + ${i.Id}" class="btn btn-success">Editar</a>
+                        <a th:href="@{/respuestas/eliminar/} + ${i.Id}" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar al usuario?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

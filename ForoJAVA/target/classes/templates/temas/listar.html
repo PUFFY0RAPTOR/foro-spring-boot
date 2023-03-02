@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+</html>
+<html lang="en">
+
+<head th:replace="./base :: head"></head>
+
+<body>
+
+  <nav th:replace="./base :: nav"></nav>
+    
+    <div class="container mt-5 p-2">
+        <h1 class="text-center mt-4" th:text="${titulo}"></h1>
+
+        <a class="btn btn-info" th:href="@{/temas/form}">Registrar tema</a><br/><br/>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre del tema</th>
+                    <th>Descripción del tema</th>  
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="i: ${datos}">
+                    <td th:text="${i.Id}"></td>
+                    <td th:text="${i.NombreTema}"></td>
+                    <td th:text="${i.DescTema}"></td>
+                    <td>
+                        <a th:href="@{/temas/editar/} + ${i.Id}" class="btn btn-success">Editar</a>
+                        <a th:href="@{/temas/eliminar/} + ${i.Id}" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el tema?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

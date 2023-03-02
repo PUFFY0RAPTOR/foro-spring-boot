@@ -1,0 +1,1 @@
+/* INSERT INTO usuarios (id, apellido, contrasena, nombre, nombre_usuario, tel) VALUES(1, 'Pertúz', 'sebas100', 'Sebastian', 'PUFFY_RAPTOR', 3116540851); */

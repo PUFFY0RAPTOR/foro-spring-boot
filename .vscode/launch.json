@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ForoApplication<foro>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.foro.juniors.foro.ForoApplication",
+            "projectName": "foro",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

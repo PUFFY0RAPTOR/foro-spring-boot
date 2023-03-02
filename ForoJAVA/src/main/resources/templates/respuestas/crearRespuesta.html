@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+</html>
+<html lang="en">
+
+<head th:replace="./base :: head"></head>
+
+<body>
+    <!-- <div th:object="${usuario}" th:remove="tag">
+        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+            <li th:each="err:${#fields.errors('*')}" th:text="${err}"> 
+
+            </li>
+        </ul>
+    </div> -->
+    
+    <h1 class="text-center mt-5" th:text="${titulo}"></h1>
+
+    <form th:action="@{/respuestas/guardar}" th:object="${respuesta}" method="post" class="container">
+
+        <div class="form-group">
+            <label class="form-label" for="idCom">Comentario: </label>
+            <select class="form-select" name="datosCom" id="idCom" th:field="*{comentario.id}">
+                <option value="" selected>Seleccione un comentario</option>
+                <option th:each="i: ${datosCom}" th:value="${i.Id}" th:text="${i.Id}"></option>
+            </select>
+        </div><br/>
+
+        <div class="form-group">
+            <label class="form-label" for="idUsu">Usuario: </label>
+            <select class="form-select" name="datosUser" id="idUsu" th:field="*{usuario.id}">
+                <option value="" selected>Seleccione un usuario</option>
+                <option th:each="i: ${datosUser}" th:value="${i.Id}" th:text="${i.Id} +' - '+ ${i.Nombre}"></option>
+            </select>
+        </div><br/>
+
+        <div class="form-group">
+            <label class="form-label" for="res">Respuesta del comentario: </label>
+            <textarea class="form-control" th:field="*{ResComentario}" id="res" cols="30" rows="10"></textarea><br/><br/>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Listo">
+
+        <a class="btn btn-danger" th:href="@{/respuestas/listar}">Cancelar</a>
+
+        <input type="hidden" th:field="*{Id}">
+
+    </form>
+
+</body>
+</html>

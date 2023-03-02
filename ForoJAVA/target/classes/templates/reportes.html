@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+</html>
+<html lang="en">
+
+<head th:replace="./base :: head"></head>
+
+<body>
+    
+    <nav th:replace="./base :: nav"></nav>
+
+    <h1 class="mt-5 text-center pt-5" th:text="${titulo}"></h1>
+
+
+    <div class="container mt-5 border border-info" th:each="i: ${usuario}">
+        <h3>Usuario:</h3>
+        <span th:text="${i.Nombre}"></span>
+        <span th:text="${i.Apellido}"></span><br>
+
+        <hr>
+
+        <h3>Publicación: </h3>
+        <div th:each="p: ${publicacion}">
+            <p class="text-primary" th:if="${p.usuario.id == (i.id)}" th:text="${p.tema.NombreTema}"></p>
+            <p th:if="${p.usuario.id == (i.id)}" th:text="${p.Asunto}"></p>
+        </div>
+        
+        <hr>
+        
+
+
+    </div>
+
+</body>
