@@ -19,18 +19,19 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre y apellido</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
                     <th>Teléfono</th>
                     <th>Nombre de usuario</th>
                     <th>Contraseña</th>
                     <th>Acciones</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="i: ${datos}">
                     <td th:text="${i.Id}"></td>
-                    <td th:text="${i.Nombre} +' '+ ${i.Apellido}"></td>
+                    <td th:text="${i.Nombre}"></td>
+                    <td th:text="${i.Apellido}"></td>
                     <td th:text="${i.Tel}"></td>
                     <td th:text="${i.NombreUsuario}"></td>
                     <td th:text="${i.Contrasena}"></td>

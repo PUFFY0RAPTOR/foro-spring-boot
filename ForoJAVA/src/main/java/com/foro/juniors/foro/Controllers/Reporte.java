@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.ITemplateEngine;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("reportes")
@@ -59,12 +62,25 @@ public class Reporte {
     public ResponseEntity<?> getPDF(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         TemplateEngine templateEngine = new TemplateEngine();
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix("templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(0);
+
+        templateEngine.setTemplateResolver(templateResolver);
+
+        IPublicacionService pub = new PublicacionServiceImp();
+        IUsuarioService usu = new UsuarioServiceImp();
+        IComentarioService com = new ComentarioServiceImp();
+        IRespuestaService res = new RespuestaServiceImp();
 
         WebContext context = new WebContext(request, response, request.getServletContext());
-        context.setVariable("usuario", usuarioService.findAll());
-        context.setVariable("publicacion", publicacionService.findAll());
-        context.setVariable("comentario", comentarioService.findAll());
-        context.setVariable("respuesta", respuestaService.findAll());
+        context.setVariable("publi", pub);
+        context.setVariable("usua", usu);
+        context.setVariable("respu", res);
+        context.setVariable("comen", com);
         String contentHtml = templateEngine.process("reportes", context);
 
         ByteArrayOutputStream target = new ByteArrayOutputStream();

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
 
-</html>
-<html lang="en">
+<html lang="en" xmlns="http://www.thymeleaf.org">
 
 <head th:replace="./base :: head"></head>
 
@@ -15,7 +13,7 @@
 
     <div class="container mt-5 border border-secondary p-3" th:each="i: ${usuario}">
         <h3>Usuario:</h3>
-        <span th:text="${i.Nombre}"></span>
+        <span th:text="${i.nombre}"></span>
         <span th:text="${i.Apellido}"></span><br>
 
         <hr>
@@ -41,3 +39,4 @@
     </div>
 
 </body>
+</html>
