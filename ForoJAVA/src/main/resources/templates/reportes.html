@@ -10,10 +10,10 @@
     
     <nav th:replace="./base :: nav"></nav>
 
-    <h1 class="mt-5 text-center pt-5" th:text="${titulo}"></h1>
+    <h1 class="mt-5 text-center pt-5 text-primary" th:text="${titulo}"></h1>
 
 
-    <div class="container mt-5 border border-info" th:each="i: ${usuario}">
+    <div class="container mt-5 border border-secondary p-3" th:each="i: ${usuario}">
         <h3>Usuario:</h3>
         <span th:text="${i.Nombre}"></span>
         <span th:text="${i.Apellido}"></span><br>
@@ -23,12 +23,20 @@
         <h3>Publicación: </h3>
         <div th:each="p: ${publicacion}">
             <p class="text-primary" th:if="${p.usuario.id == (i.id)}" th:text="${p.tema.NombreTema}"></p>
-            <p th:if="${p.usuario.id == (i.id)}" th:text="${p.Asunto}"></p>
+            <p th:if="${p.usuario.id == (i.id)}" th:text="${p.asunto}"></p>
         </div>
         
         <hr>
         
-
+        <h3>Comentarios: </h3>
+        <div th:each="c: ${comentario}">
+            <p class="fst-italic fw-light" th:if="${c.usuario.id == (i.id)}" th:text="${c.usuario.nombreUsuario}"></p>
+            <p th:if="${c.usuario.id == (i.id)}" th:text="${c.respuesta}"></p>
+        </div>
+        <div th:each="r: ${respuesta}">
+            <p class="fst-italic fw-light" th:if="${r.usuario.id == (i.id)}" th:text="${r.usuario.nombreUsuario}"></p>
+            <p th:if="${r.usuario.id == (i.id)}" th:text="${r.resComentario}"></p>
+        </div>
 
     </div>
 

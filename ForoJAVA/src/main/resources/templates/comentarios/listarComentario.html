@@ -28,7 +28,7 @@
             <tbody>
                 <tr th:each="i: ${datos}">
                     <td th:text="${i.Id}"></td>
-                    <td th:text="${i.Usuario.Nombre}"></td>
+                    <td th:text="${i.Usuario.Nombre} +' '+ ${i.Usuario.Apellido}"></td>
                     <td th:text="${i.Respuesta}"></td>
                     <td th:text="${i.Publicacion.Asunto}"></td>
                     <td>

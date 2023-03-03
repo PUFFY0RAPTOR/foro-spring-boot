@@ -29,7 +29,7 @@
                 <tr th:each="i: ${datos}">
                     <td th:text="${i.Id}"></td>
                     <td th:text="${i.comentario.Respuesta}"></td>
-                    <td th:text="${i.Usuario.Nombre}"></td>
+                    <td th:text="${i.Usuario.Nombre} +' '+ ${i.Usuario.Apellido}"></td>
                     <td th:text="${i.ResComentario}"></td>
                     <td>
                         <a th:href="@{/respuestas/editar/} + ${i.Id}" class="btn btn-success">Editar</a>
