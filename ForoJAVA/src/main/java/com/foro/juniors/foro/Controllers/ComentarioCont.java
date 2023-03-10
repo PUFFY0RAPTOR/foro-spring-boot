@@ -32,7 +32,7 @@ public class ComentarioCont {
     private IPublicacionService publicacionService;
 
 
-    @GetMapping("/listar")
+    @GetMapping("/listar") //Método para mostrar la lista de los comentarios existentes
     public String listar(Model model){
         
         model.addAttribute("titulo", "Listado de Comentarios");
@@ -42,7 +42,7 @@ public class ComentarioCont {
     }
 
 
-    @GetMapping("/form")
+    @GetMapping("/form") //Método para acceder mostrar los datos de la Entity en un formulario.
     public String crear(Map<String, Object> model){
         
         Comentario comentario = new Comentario();
@@ -56,7 +56,7 @@ public class ComentarioCont {
     }
 
 
-    @PostMapping("/guardar")
+    @PostMapping("/guardar") //Método para guardar los comentarios que se agrueguen
     public String guardar(@Valid Comentario comentario, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Registro de Comentarios");
@@ -66,7 +66,7 @@ public class ComentarioCont {
         return "redirect:/comentarios/listar";
     }
 
-    @GetMapping("/editar/{Id}")
+    @GetMapping("/editar/{Id}") //Método para editar los comentarios
     public String editar(@PathVariable Long Id, Map<String, Object> model) {
 
         Comentario comentario = null;
@@ -85,7 +85,7 @@ public class ComentarioCont {
         return "comentarios/crearComentario";
     }
 
-    @GetMapping("/eliminar/{Id}")
+    @GetMapping("/eliminar/{Id}") //Método para eliminar los registros de los comentarios
     public String eliminar(@PathVariable Long Id) {
 
         if (Id > 0){
